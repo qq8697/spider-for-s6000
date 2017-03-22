@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var originalLog="<11>Mar 13 15:20:19 localhost waf: tag:waf_log_websec site_id:1  protect_id:1  dst_ip:10.90.233.82  dst_port:80  src_ip:110.223.10.20  src_port:14035  method:GET  domain:None  uri:/  alertlevel:MEDIUM  event_type:HTTP_Protocol_Validation  stat_time:2017-03-13 15:20:13  policy_id:1  rule_id:0  action:Accept  block:No  block_info:None  http:GET / HTTP/1.1  alertinfo:request without header Host  proxy_info:None  characters:None  count_num:1  protocol_type:HTTP  wci:None  wsi:None  country:China "
+		var obj={
+			'waf':'',
+			'tag':'',
+			'site_id':'',
+			'protect_id':'',
+			'dst_ip':'',
+			'dst_port':'',
+			'src_ip':'',
+			'src_port':'',
+			'method':'',
+			'domain':'',
+			'uri':'',
+			'alertlevel':'',
+			'event_type':'',
+			'stat_time':'',
+			'policy_id':'',
+			'rule_id':'',
+			'action':'',
+			'block':'',
+			'block_info':'',
+			'http':'',
+			'alertinfo':'',
+			'proxy_info':'',
+			'characters':'',
+			'count_num':'',
+			'protocol_type':'',
+			'wci':'',
+			'wsi':'',
+			'country':''
+		}
+		var arr=[
+			'waf',
+			'tag',
+			'site_id',
+			'protect_id',
+			'dst_ip',
+			'dst_port',
+			'src_ip',
+			'src_port',
+			'method',
+			'domain',
+			'uri',
+			'alertlevel',
+			'event_type',
+			'stat_time',
+			'policy_id',
+			'rule_id',
+			'action',
+			'block',
+			'block_info',
+			'http',
+			'alertinfo',
+			'proxy_info',
+			'characters',
+			'count_num',
+			'protocol_type',
+			'wci',
+			'wsi',
+			'country'
+		]
+		for(var i=0;i<arr.length;i++){
+			var startIndex=originalLog.indexOf(arr[i])+arr[i].length+1;
+			var endIndex;
+			if(arr[i+1]){
+				endIndex=originalLog.indexOf(arr[i+1])-1;
+			}
+			else{
+				endIndex=originalLog.length-1;
+			}
+			// debugger;
+			obj[arr[i]]=originalLog.substring(startIndex,endIndex).trim();
+		}
+		console.log(obj);
+		// var parse=/^(?:)$/
+		// var result=parse.exec(originalLog);
+	</script>
+</body>
+</html>
